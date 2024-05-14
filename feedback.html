@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./feedback.css">
+</head>
+
+<body>
+    <div class='fb-form'>
+        <form action="https://api.web3forms.com/submit" method="POST" class="form-group">
+            <h2>Tell us what you think</h2>
+            <input type="hidden" name="access_key" value="7cb72d30-37de-4cba-9ff6-ac2bf24521ee">
+            <input class='form-control' placeholder='Name' type='text' name="name">
+            <input class='form-control' placeholder='Email' type='text' name="email">
+            <input  class='form-control'  type='number' id="number-start" name="stars" style="display: none;">
+            <textarea class='form-control' name='fb-comment' name='' placeholder='Tell us what you think'></textarea>
+            <div class='rating'>
+                <i class='fa fa-star'></i>
+                <i class='fa fa-star'></i>
+                <i class='fa fa-star'></i>
+                <i class='fa fa-star'></i>
+                <i class='fa fa-star'></i>
+            </div>
+            <div class="h-captcha" data-captcha="true"></div>
+            <input class='form-control btn btn-primary' type='submit'>
+        </form>
+    </div>
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+    <script>
+        $(".rating .fa-star").click(function () {
+            $(".rating .active-rating").removeClass("active-rating");
+            $(this).toggleClass("active-rating");
+        });
+    </script>
+    <script>
+        const star = Array.from(document.getElementsByClassName('fa-star'));
+        star.forEach((ele, index)=>{
+            ele.addEventListener('click', ()=>{
+                document.getElementById('number-start').value = 5 - (index );
+                console.log('click')
+            })
+        })
+    </script>
+</body>
+
+</html>
